@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jasa Instalasi & Programming Fire Alarm</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,215 +15,270 @@
       .menu-toggle {
         display: none;
       }
-      .menu-toggle:checked + .mobile-menu {
+      .menu-toggle:checked ~ .mobile-menu {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
       .mobile-menu {
         display: none;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 8px 8px;
+      }
+      .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 40;
+        transition: opacity 0.3s ease;
+      }
+      .menu-toggle:checked ~ .mobile-menu-overlay {
+        display: block;
+      }
+      .hero-bg {
+        background-image: url('https://picsum.photos/1920/1080?grayscale&blur=2');
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+      }
+      @media (min-width: 768px) {
+        .hero-bg {
+          height: 80vh;
+        }
       }
     </style>
   </head>
-  <body class="bg-gray-50 font-sans">
+  <body class="bg-light">
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold text-gray-800">
-          Fire<span class="text-red-600">Secure</span>
+    <header class="bg-white bg-opacity-75 backdrop-blur-lg shadow-sm sticky-top" style="z-index: 50;">
+      <div class="container-fluid px-3 py-3 d-flex justify-content-between align-items-center">
+        <a href="#" class="h4 fw-bold text-dark">
+          Fire<span class="text-danger">Secure</span>
         </a>
-        <nav class="hidden md:flex items-center space-x-2">
-          <a href="#services" class="text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Layanan</a>
-          <a href="#why-us" class="text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Mengapa Kami</a>
-          <a href="#case-studies" class="text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Studi Kasus</a>
-          <a href="#contact" class="text-gray-700 hover:text-red-600 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Kontak</a>
+        <nav class="d-none d-md-flex align-items-center">
+          <a href="#services" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Layanan</a>
+          <a href="#why-us" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Mengapa Kami</a>
+          <a href="#case-studies" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Studi Kasus</a>
+          <a href="#contact" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Kontak</a>
         </nav>
-        <div class="md:hidden">
-          <input type="checkbox" id="menu-toggle" class="menu-toggle">
-          <label for="menu-toggle" class="text-gray-800 focus:outline-none cursor-pointer">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <div class="d-md-none position-relative">
+          <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" onchange="this.setAttribute('aria-expanded', this.checked)">
+          <label for="menu-toggle" class="text-dark d-flex align-items-center justify-content-center" style="cursor: pointer; width: 40px; height: 40px; border-radius: 4px; transition: background-color 0.2s ease;" aria-label="Open mobile menu">
+            <svg class="bi bi-list" width="24" height="24" fill="currentColor">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
           </label>
+          <div class="mobile-menu d-md-none" role="navigation" aria-label="Mobile navigation menu">
+            <nav class="d-flex flex-column align-items-center px-2 pt-2 pb-4">
+              <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close menu" onclick="document.getElementById('menu-toggle').checked = false;"></button>
+              <a href="#services" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Layanan</a>
+              <a href="#why-us" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Mengapa Kami</a>
+              <a href="#case-studies" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Studi Kasus</a>
+              <a href="#contact" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Kontak</a>
+            </nav>
+          </div>
+          <div class="mobile-menu-overlay" onclick="document.getElementById('menu-toggle').checked = false;"></div>
         </div>
-      </div>
-      <div class="mobile-menu md:hidden bg-white">
-        <nav class="flex flex-col items-center px-2 pt-2 pb-4 space-y-1">
-          <a href="#services" class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50">Layanan</a>
-          <a href="#why-us" class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50">Mengapa Kami</a>
-          <a href="#case-studies" class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50">Studi Kasus</a>
-          <a href="#contact" class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50">Kontak</a>
-        </nav>
       </div>
     </header>
 
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="relative h-[60vh] md:h-[80vh] bg-cover bg-center text-white flex items-center" style="background-image: url('https://picsum.photos/1920/1080?grayscale&blur=2')">
-        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-        <div class="relative container mx-auto px-6 text-center">
-          <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-            Solusi Profesional Fire Alarm <br class="hidden md:block" /> Notifier & Siemens
+      <section class="hero-bg text-white d-flex align-items-center">
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
+        <div class="position-relative container-fluid px-3 text-center">
+          <h1 class="display-4 fw-bold mb-4">
+            Solusi Profesional Fire Alarm <br class="d-none d-md-block" /> Notifier & Siemens
           </h1>
-          <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">
+          <p class="lead mb-5 text-light">
             Instalasi, Programming, dan Perawatan Sistem Keamanan Kebakaran Terpercaya.
           </p>
-          <a href="#contact" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+          <a href="#contact" class="btn btn-danger btn-lg rounded-pill px-5 py-3">
             Konsultasi Gratis
           </a>
         </div>
       </section>
 
       <!-- Services Section -->
-      <section id="services" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Layanan Unggulan Kami</h2>
-            <p class="text-lg text-gray-600 mt-2">Solusi lengkap untuk sistem proteksi kebakaran Anda.</p>
-            <div class="mt-4 w-24 h-1 bg-red-600 mx-auto rounded"></div>
+      <section id="services" class="py-5 bg-light">
+        <div class="container-fluid px-3">
+          <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-dark">Layanan Unggulan Kami</h2>
+            <p class="lead text-muted">Solusi lengkap untuk sistem proteksi kebakaran Anda.</p>
+            <div class="mt-3 mx-auto" style="width: 6rem; height: 0.25rem; background-color: #dc3545;"></div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center transform hover:-translate-y-2">
-              <div class="mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.23 5.75m11.1-1.115l-3.877-3.877a3.375 3.375 0 00-4.773 0L3.181 5.828c-.878.878-1.096 2.22-.598 3.253l4.773 4.773c1.034.5 2.376.28 3.254-.598l2.732-2.732m-1.115-3.877c.23.23.44.477.636.746"></path>
-                </svg>
+          <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                  <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.23 5.75m11.1-1.115l-3.877-3.877a3.375 3.375 0 00-4.773 0L3.181 5.828c-.878.878-1.096 2.22-.598 3.253l4.773 4.773c1.034.5 2.376.28 3.254-.598l2.732-2.732m-1.115-3.877c.23.23.44.477.636.746"></path>
+                    </svg>
+                  </div>
+                  <h3 class="card-title h5 fw-bold text-dark mb-3">Instalasi Fire Alarm</h3>
+                  <p class="card-text text-muted">Pemasangan sistem fire alarm baru sesuai standar keamanan nasional dan internasional untuk berbagai jenis properti.</p>
+                </div>
               </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">Instalasi Fire Alarm</h3>
-              <p class="text-gray-600 leading-relaxed">Pemasangan sistem fire alarm baru sesuai standar keamanan nasional dan internasional untuk berbagai jenis properti.</p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center transform hover:-translate-y-2">
-              <div class="mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 15"></path>
-                </svg>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                  <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 15"></path>
+                    </svg>
+                  </div>
+                  <h3 class="card-title h5 fw-bold text-dark mb-3">Programming Notifier</h3>
+                  <p class="card-text text-muted">Jasa programming, konfigurasi, dan commissioning untuk semua jenis panel Master Control Fire Alarm (MCFA) Notifier.</p>
+                </div>
               </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">Programming Notifier</h3>
-              <p class="text-gray-600 leading-relaxed">Jasa programming, konfigurasi, dan commissioning untuk semua jenis panel Master Control Fire Alarm (MCFA) Notifier.</p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center transform hover:-translate-y-2">
-              <div class="mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 15"></path>
-                </svg>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                  <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 15"></path>
+                    </svg>
+                  </div>
+                  <h3 class="card-title h5 fw-bold text-dark mb-3">Programming Siemens Cerberus PRO & ECO</h3>
+                  <p class="card-text text-muted">Keahlian khusus dalam programming dan integrasi sistem fire alarm Siemens Cerberus PRO dan Cerberus ECO untuk proteksi maksimal.</p>
+                </div>
               </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">Programming Siemens Cerberus PRO & ECO</h3>
-              <p class="text-gray-600 leading-relaxed">Keahlian khusus dalam programming dan integrasi sistem fire alarm Siemens Cerberus PRO dan Cerberus ECO untuk proteksi maksimal.</p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center transform hover:-translate-y-2">
-              <div class="mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                  <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="card-title h5 fw-bold text-dark mb-3">Perawatan & Troubleshooting</h3>
+                  <p class="card-text text-muted">Layanan pemeliharaan rutin dan perbaikan cepat untuk memastikan sistem Anda selalu berfungsi optimal.</p>
+                </div>
               </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">Perawatan & Troubleshooting</h3>
-              <p class="text-gray-600 leading-relaxed">Layanan pemeliharaan rutin dan perbaikan cepat untuk memastikan sistem Anda selalu berfungsi optimal.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Why Us Section -->
-      <section id="why-us" class="py-20 bg-gray-800 text-white">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold">Mengapa Memilih Kami?</h2>
-            <p class="text-lg text-gray-300 mt-2">Komitmen kami untuk keamanan dan kepuasan Anda.</p>
-            <div class="mt-4 w-24 h-1 bg-red-600 mx-auto rounded"></div>
+      <section id="why-us" class="py-5 bg-dark text-white">
+        <div class="container-fluid px-3">
+          <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Mengapa Memilih Kami?</h2>
+            <p class="lead text-light">Komitmen kami untuk keamanan dan kepuasan Anda.</p>
+            <div class="mt-3 mx-auto" style="width: 6rem; height: 0.25rem; background-color: #dc3545;"></div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="flex flex-col items-center text-center">
-              <div class="bg-red-600 p-4 rounded-full mb-5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="row g-5">
+            <div class="col-12 col-md-4 text-center">
+              <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 4rem; height: 4rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-white" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962c.57-1.023.995-2.148 1.273-3.362a9.04 9.04 0 01-2.54-5.975 9.04 9.04 0 0115.352-4.11m-15.352 4.11a9.04 9.04 0 011.273-3.362 9.094 9.094 0 013.741-.479m-4.682 2.72a3 3 0 01-4.682-2.72m7.5 2.962V18a3 3 0 00-3-3H6.75a3 3 0 00-3 3v.72m9-3.462a3 3 0 000-5.72M12 6v3m0 9v-3m0-6h.008v.008H12V6z"></path>
                 </svg>
               </div>
-              <h3 class="text-xl font-bold mb-2">Tim Profesional</h3>
-              <p class="text-gray-300">Teknisi kami berpengalaman dan bersertifikat khusus untuk sistem Notifier dan Siemens.</p>
+              <h3 class="h5 fw-bold mb-3">Tim Profesional</h3>
+              <p class="text-light">Teknisi kami berpengalaman dan bersertifikat khusus untuk sistem Notifier dan Siemens.</p>
             </div>
-            <div class="flex flex-col items-center text-center">
-              <div class="bg-red-600 p-4 rounded-full mb-5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="col-12 col-md-4 text-center">
+              <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 4rem; height: 4rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-white" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h3 class="text-xl font-bold mb-2">Kepatuhan Standar</h3>
-              <p class="text-gray-300">Kami memastikan setiap instalasi dan programming sesuai dengan regulasi keselamatan kebakaran yang berlaku.</p>
+              <h3 class="h5 fw-bold mb-3">Kepatuhan Standar</h3>
+              <p class="text-light">Kami memastikan setiap instalasi dan programming sesuai dengan regulasi keselamatan kebakaran yang berlaku.</p>
             </div>
-            <div class="flex flex-col items-center text-center">
-              <div class="bg-red-600 p-4 rounded-full mb-5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="col-12 col-md-4 text-center">
+              <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 4rem; height: 4rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-white" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h3 class="text-xl font-bold mb-2">Dukungan 24/7</h3>
-              <p class="text-gray-300">Siap memberikan dukungan teknis dan layanan darurat kapan pun Anda membutuhkannya.</p>
+              <h3 class="h5 fw-bold mb-3">Dukungan 24/7</h3>
+              <p class="text-light">Siap memberikan dukungan teknis dan layanan darurat kapan pun Anda membutuhkannya.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Brands Section -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-          <h3 class="text-center text-2xl font-semibold text-gray-700 mb-8">Didukung oleh Brand Terkemuka di Industri</h3>
-          <div class="flex justify-center items-center space-x-8 md:space-x-16">
-            <div class="text-center">
-              <img src="https://www.notifier.com/en-us/PublishingImages/Logo.png" alt="Notifier Logo" class="h-12 md:h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"/>
-              <p class="mt-2 font-semibold text-gray-600">Notifier by Honeywell</p>
+      <section class="py-5 bg-white">
+        <div class="container-fluid px-3">
+          <h3 class="text-center h4 fw-semibold text-muted mb-5">Didukung oleh Brand Terkemuka di Industri</h3>
+          <div class="d-flex justify-content-center align-items-center flex-wrap">
+            <div class="text-center mx-4 mb-3">
+              <img src="https://www.notifier.com/en-us/PublishingImages/Logo.png" alt="Notifier Logo" class="img-fluid" style="height: 3rem; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s, opacity 0.3s;" onmouseover="this.style.filter='grayscale(0%) opacity(1)'; this.style.transform='scale(1.05)';" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'; this.style.transform='scale(1)';"/>
+              <p class="mt-2 fw-semibold text-muted">Notifier by Honeywell</p>
             </div>
-            <div class="text-center">
-              <img src="https://www.siemens.com/Images/siemens-logo-2021.png" alt="Siemens Logo" class="h-12 md:h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"/>
-              <p class="mt-2 font-semibold text-gray-600">Siemens Cerberus PRO & ECO</p>
+            <div class="text-center mx-4 mb-3">
+              <img src="https://www.siemens.com/Images/siemens-logo-2021.png" alt="Siemens Logo" class="img-fluid" style="height: 3rem; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s, opacity 0.3s;" onmouseover="this.style.filter='grayscale(0%) opacity(1)'; this.style.transform='scale(1.05)';" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'; this.style.transform='scale(1)';"/>
+              <p class="mt-2 fw-semibold text-muted">Siemens Cerberus PRO & ECO</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Case Studies Section -->
-      <section id="case-studies" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Studi Kasus Proyek Kami</h2>
-            <p class="text-lg text-gray-600 mt-2">Bukti nyata keahlian kami di lapangan.</p>
-            <div class="mt-4 w-24 h-1 bg-red-600 mx-auto rounded"></div>
+      <section id="case-studies" class="py-5 bg-light">
+        <div class="container-fluid px-3">
+          <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-dark">Studi Kasus Proyek Kami</h2>
+            <p class="lead text-muted">Bukti nyata keahlian kami di lapangan.</p>
+            <div class="mt-3 mx-auto" style="width: 6rem; height: 0.25rem; background-color: #dc3545;"></div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-              <img src="https://picsum.photos/seed/project1/800/600" alt="Integrasi Sistem di Gedung Perkantoran High-Rise" class="w-full h-56 object-cover" />
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Integrasi Sistem di Gedung Perkantoran High-Rise</h3>
-                <div class="space-y-4">
-                  <div>
-                    <h4 class="font-semibold text-red-600">Tantangan:</h4>
-                    <p class="text-gray-600 text-sm">Mengintegrasikan sistem fire alarm Notifier dengan sistem manajemen gedung (BMS) yang sudah ada tanpa mengganggu operasional harian.</p>
+          <div class="row g-4 justify-content-center">
+            <div class="col-12 col-lg-6">
+              <div class="card shadow-lg border-0 overflow-hidden">
+                <img src="https://picsum.photos/seed/project1/800/600" alt="Integrasi Sistem di Gedung Perkantoran High-Rise" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <div class="card-body p-4">
+                  <h3 class="card-title h5 fw-bold text-dark mb-4">Integrasi Sistem di Gedung Perkantoran High-Rise</h3>
+                  <div class="mb-3">
+                    <h4 class="h6 fw-semibold text-danger mb-2">Tantangan:</h4>
+                    <p class="card-text text-muted small">Mengintegrasikan sistem fire alarm Notifier dengan sistem manajemen gedung (BMS) yang sudah ada tanpa mengganggu operasional harian.</p>
+                  </div>
+                  <div class="mb-3">
+                    <h4 class="h6 fw-semibold text-danger mb-2">Solusi:</h4>
+                    <p class="card-text text-muted small">Melakukan instalasi panel Notifier NFS2-3030 secara bertahap di luar jam kerja dan mengembangkan modul gateway kustom untuk komunikasi yang lancar dengan BMS.</p>
                   </div>
                   <div>
-                    <h4 class="font-semibold text-red-600">Solusi:</h4>
-                    <p class="text-gray-600 text-sm">Melakukan instalasi panel Notifier NFS2-3030 secara bertahap di luar jam kerja dan mengembangkan modul gateway kustom untuk komunikasi yang lancar dengan BMS.</p>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-red-600">Hasil:</h4>
-                    <p class="text-gray-600 text-sm">Sistem terintegrasi penuh, memungkinkan pemantauan terpusat dan meningkatkan waktu respons terhadap potensi kebakaran sebesar 40%.</p>
+                    <h4 class="h6 fw-semibold text-danger mb-2">Hasil:</h4>
+                    <p class="card-text text-muted small">Sistem terintegrasi penuh, memungkinkan pemantauan terpusat dan meningkatkan waktu respons terhadap potensi kebakaran sebesar 40%.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-              <img src="https://picsum.photos/seed/project2/800/600" alt="Upgrade Sistem di Pabrik Manufaktur" class="w-full h-56 object-cover" />
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Upgrade Sistem di Pabrik Manufaktur</h3>
-                <div class="space-y-4">
-                  <div>
-                    <h4 class="font-semibold text-red-600">Tantangan:</h4>
-                    <p class="text-gray-600 text-sm">Mengganti sistem fire alarm konvensional yang usang dengan sistem addressable Siemens Cerberus PRO di area produksi yang beroperasi 24/7.</p>
+            <div class="col-12 col-lg-6">
+              <div class="card shadow-lg border-0 overflow-hidden">
+                <img src="https://picsum.photos/seed/project2/800/600" alt="Upgrade Sistem di Pabrik Manufaktur" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <div class="card-body p-4">
+                  <h3 class="card-title h5 fw-bold text-dark mb-4">Upgrade Sistem di Pabrik Manufaktur</h3>
+                  <div class="mb-3">
+                    <h4 class="h6 fw-semibold text-danger mb-2">Tantangan:</h4>
+                    <p class="card-text text-muted small">Mengganti sistem fire alarm konvensional yang usang dengan sistem addressable Siemens Cerberus PRO di area produksi yang beroperasi 24/7.</p>
+                  </div>
+                  <div class="mb-3">
+                    <h4 class="h6 fw-semibold text-danger mb-2">Solusi:</h4>
+                    <p class="card-text text-muted small">Merancang rencana migrasi zona-per-zona, memastikan area kritis tetap terproteksi selama proses upgrade. Menggunakan detektor khusus yang tahan terhadap lingkungan industri.</p>
                   </div>
                   <div>
-                    <h4 class="font-semibold text-red-600">Solusi:</h4>
-                    <p class="text-gray-600 text-sm">Merancang rencana migrasi zona-per-zona, memastikan area kritis tetap terproteksi selama proses upgrade. Menggunakan detektor khusus yang tahan terhadap lingkungan industri.</p>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-red-600">Hasil:</h4>
-                    <p class="text-gray-600 text-sm">Peningkatan akurasi deteksi dini, pengurangan alarm palsu secara drastis, dan kemudahan dalam penentuan lokasi titik alarm secara spesifik.</p>
+                    <h4 class="h6 fw-semibold text-danger mb-2">Hasil:</h4>
+                    <p class="card-text text-muted small">Peningkatan akurasi deteksi dini, pengurangan alarm palsu secara drastis, dan kemudahan dalam penentuan lokasi titik alarm secara spesifik.</p>
                   </div>
                 </div>
               </div>
@@ -233,46 +288,51 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Hubungi Kami</h2>
-            <p class="text-lg text-gray-600 mt-2">Dapatkan penawaran dan konsultasi gratis untuk proyek Anda.</p>
-            <div class="mt-4 w-24 h-1 bg-red-600 mx-auto rounded"></div>
+      <section id="contact" class="py-5 bg-white">
+        <div class="container-fluid px-3">
+          <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-dark">Hubungi Kami</h2>
+            <p class="lead text-muted">Dapatkan penawaran dan konsultasi gratis untuk proyek Anda.</p>
+            <div class="mt-3 mx-auto" style="width: 6rem; height: 0.25rem; background-color: #dc3545;"></div>
           </div>
-          <div class="max-w-4xl mx-auto bg-gray-50 p-8 md:p-12 rounded-xl shadow-lg border border-gray-200">
-            <form>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                  <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="John Doe" required />
-                </div>
-                <div>
-                  <label for="email" class="block text-gray-700 font-medium mb-2">Alamat Email</label>
-                  <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="john.doe@example.com" required />
-                </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+              <div class="bg-light p-4 p-md-5 rounded-3 shadow-lg border">
+                <form>
+                  <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-6">
+                      <label for="name" class="form-label fw-medium text-dark">Nama Lengkap</label>
+                      <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="John Doe" required />
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="email" class="form-label fw-medium text-dark">Alamat Email</label>
+                      <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="john.doe@example.com" required />
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="message" class="form-label fw-medium text-dark">Pesan Anda</label>
+                    <textarea id="message" name="message" rows="5" class="form-control form-control-lg" placeholder="Jelaskan kebutuhan Anda..." required></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-danger btn-lg px-5 py-3 rounded-pill">
+                      Kirim Pesan
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="mb-6">
-                <label for="message" class="block text-gray-700 font-medium mb-2">Pesan Anda</label>
-                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Jelaskan kebutuhan Anda..." required></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-12 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
-                  Kirim Pesan
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8">
-      <div class="container mx-auto px-6 text-center">
+    <footer class="bg-dark text-light py-4">
+      <div class="container-fluid px-3 text-center">
         <p>&copy; 2025 FireSecure. All Rights Reserved.</p>
-        <p class="text-sm mt-1">Jasa Profesional Instalasi & Programming Fire Alarm</p>
+        <p class="small mb-0">Jasa Profesional Instalasi & Programming Fire Alarm</p>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
