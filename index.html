@@ -8,88 +8,108 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      .menu-toggle {
-        display: none;
-      }
-      .menu-toggle:checked ~ .mobile-menu {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .mobile-menu {
-        display: none;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 8px 8px;
-      }
-      .mobile-menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 40;
-        transition: opacity 0.3s ease;
-      }
-      .menu-toggle:checked ~ .mobile-menu-overlay {
-        display: block;
-      }
-      .hero-bg {
-        background-image: url('https://picsum.photos/1920/1080?grayscale&blur=2');
-        background-size: cover;
-        background-position: center;
-        height: 60vh;
-      }
-      @media (min-width: 768px) {
-        .hero-bg {
-          height: 80vh;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body class="bg-light">
     <!-- Header -->
-    <header class="bg-white bg-opacity-75 backdrop-blur-lg shadow-sm sticky-top" style="z-index: 50;">
-      <div class="container-fluid px-3 py-3 d-flex justify-content-between align-items-center">
-        <a href="#" class="h4 fw-bold text-dark">
-          Fire<span class="text-danger">Secure</span>
-        </a>
-        <nav class="d-none d-md-flex align-items-center">
-          <a href="#services" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Layanan</a>
-          <a href="#why-us" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Mengapa Kami</a>
-          <a href="#case-studies" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Studi Kasus</a>
-          <a href="#contact" class="text-muted text-decoration-none fw-medium px-3 py-2 rounded">Kontak</a>
-        </nav>
-        <div class="d-md-none position-relative">
-          <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" onchange="this.setAttribute('aria-expanded', this.checked)">
-          <label for="menu-toggle" class="text-dark d-flex align-items-center justify-content-center" style="cursor: pointer; width: 40px; height: 40px; border-radius: 4px; transition: background-color 0.2s ease;" aria-label="Open mobile menu">
-            <svg class="bi bi-list" width="24" height="24" fill="currentColor">
-              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+    <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-lg sticky-top" style="z-index: 50; position: sticky; top: 0;">
+      <div class="container-fluid px-3 py-3">
+        <!-- Desktop Header -->
+        <div class="d-none d-lg-flex justify-content-between align-items-center">
+          <a href="#" class="h3 fw-bold text-dark d-flex align-items-center">
+            <svg class="me-2" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
             </svg>
-          </label>
+            Fire<span class="text-danger">Secure</span>
+          </a>
+          <nav class="d-flex align-items-center gap-4">
+            <a href="#services" class="nav-link text-dark fw-semibold px-3 py-2 rounded-pill hover-bg-danger transition-all">Layanan</a>
+            <a href="#why-us" class="nav-link text-dark fw-semibold px-3 py-2 rounded-pill hover-bg-danger transition-all">Mengapa Kami</a>
+            <a href="#case-studies" class="nav-link text-dark fw-semibold px-3 py-2 rounded-pill hover-bg-danger transition-all">Studi Kasus</a>
+            <a href="#contact" class="nav-link text-dark fw-semibold px-3 py-2 rounded-pill hover-bg-danger transition-all">Kontak</a>
+            <a href="#contact" class="btn btn-danger btn-sm rounded-pill px-4 py-2 fw-semibold">Konsultasi Gratis</a>
+          </nav>
+        </div>
+
+        <!-- Tablet Header -->
+        <div class="d-none d-md-flex d-lg-none justify-content-between align-items-center">
+          <a href="#" class="h4 fw-bold text-dark d-flex align-items-center">
+            <svg class="me-2" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+            </svg>
+            Fire<span class="text-danger">Secure</span>
+          </a>
+          <nav class="d-flex align-items-center gap-3">
+            <a href="#services" class="nav-link text-dark fw-semibold px-2 py-1 rounded-pill hover-bg-danger transition-all">Layanan</a>
+            <a href="#why-us" class="nav-link text-dark fw-semibold px-2 py-1 rounded-pill hover-bg-danger transition-all">Mengapa Kami</a>
+            <a href="#case-studies" class="nav-link text-dark fw-semibold px-2 py-1 rounded-pill hover-bg-danger transition-all">Studi Kasus</a>
+            <a href="#contact" class="nav-link text-dark fw-semibold px-2 py-1 rounded-pill hover-bg-danger transition-all">Kontak</a>
+          </nav>
+        </div>
+
+        <!-- Mobile Header -->
+        <div class="d-md-none">
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="#" class="h5 fw-bold text-dark d-flex align-items-center">
+              <svg class="me-2" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+              </svg>
+              Fire<span class="text-danger">Secure</span>
+            </a>
+            <label for="menu-toggle" class="hamburger-menu text-dark d-flex align-items-center justify-content-center rounded-circle" style="cursor: pointer; width: 44px; height: 44px; transition: all 0.3s ease;" aria-label="Open mobile menu">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </label>
+          </div>
+          <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" onchange="this.setAttribute('aria-expanded', this.checked)">
           <div class="mobile-menu d-md-none" role="navigation" aria-label="Mobile navigation menu">
-            <nav class="d-flex flex-column align-items-center px-2 pt-2 pb-4">
-              <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close menu" onclick="document.getElementById('menu-toggle').checked = false;"></button>
-              <a href="#services" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Layanan</a>
-              <a href="#why-us" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Mengapa Kami</a>
-              <a href="#case-studies" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Studi Kasus</a>
-              <a href="#contact" class="d-block w-100 text-center px-3 py-2 rounded text-muted fw-medium" onclick="document.getElementById('menu-toggle').checked = false;">Kontak</a>
+            <div class="d-flex justify-content-end px-3 py-2 border-bottom">
+              <button class="btn btn-sm btn-outline-danger rounded-circle" style="width: 32px; height: 32px; font-size: 16px; line-height: 1;" onclick="document.getElementById('menu-toggle').checked = false;" aria-label="Close mobile menu">×</button>
+            </div>
+            <nav class="d-flex flex-column px-3 py-4">
+              <a href="#services" class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all" onclick="document.getElementById('menu-toggle').checked = false;">
+                <span class="d-flex align-items-center">
+                  <svg class="me-3 text-danger" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+                  </svg>
+                  Layanan
+                </span>
+              </a>
+              <a href="#why-us" class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all" onclick="document.getElementById('menu-toggle').checked = false;">
+                <span class="d-flex align-items-center">
+                  <svg class="me-3 text-danger" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                  </svg>
+                  Mengapa Kami
+                </span>
+              </a>
+              <a href="#case-studies" class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all" onclick="document.getElementById('menu-toggle').checked = false;">
+                <span class="d-flex align-items-center">
+                  <svg class="me-3 text-danger" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.467-.994-3.806-1.127-1.446-.195-2.993-.341-4.530-.918-.742-.25-1.6-.636-2.174-1.421-.596-.806-1.065-1.754-1.032-2.792.033-1.012.54-1.958 1.112-2.599.723-.894 1.817-1.509 2.967-1.865zm7.578-.033c.328 1.139.687 2.31.975 3.544.242.989.98 1.667 1.928 1.806 1.149.209 2.327.22 3.394.036 1.073-.183 2.148-.367 3.074-.56.693-.189 1.294-.42 1.817-.673.518-.255 1.79-.667 2.164-1.083.928-.827 1.52-1.859 1.52-2.949 0-.986-.451-1.944-1.248-2.675-.81-.722-1.964-1.263-3.257-1.463-1.239-.193-2.52-.195-3.737-.013-1.28.194-2.52.537-3.406 1.043-.907.525-1.553 1.152-1.962 1.867z"/>
+                  </svg>
+                  Studi Kasus
+                </span>
+              </a>
+              <a href="#contact" class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all" onclick="document.getElementById('menu-toggle').checked = false;">
+                <span class="d-flex align-items-center">
+                  <svg class="me-3 text-danger" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                  </svg>
+                  Kontak
+                </span>
+              </a>
+              <div class="mt-3 pt-3 border-top">
+                <a href="#contact" class="btn btn-danger w-100 rounded-pill py-3 fw-semibold" onclick="document.getElementById('menu-toggle').checked = false;">Konsultasi Gratis</a>
+              </div>
             </nav>
           </div>
-          <div class="mobile-menu-overlay" onclick="document.getElementById('menu-toggle').checked = false;"></div>
         </div>
       </div>
     </header>
