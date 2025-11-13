@@ -1,3 +1,16 @@
+:root {
+  --primary-color: #dc3545;
+  --primary-rgb: 220, 53, 69;
+  --success-color: #198754;
+  --success-rgb: 25, 135, 84;
+  --light-bg: #f8f9fa;
+  --dark-bg: #212529;
+  --transition: all 0.3s ease;
+  --border-radius: 0.5rem;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
@@ -24,7 +37,7 @@ html {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: #000;
+  background: var(--dark-bg);
   color: #fff;
   padding: 8px;
   text-decoration: none;
@@ -37,7 +50,7 @@ html {
 }
 
 .form-control:focus {
-  outline: 2px solid #dc3545;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
@@ -97,21 +110,21 @@ header {
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  background-color: rgba(220, 53, 69, 0.1);
-  color: #dc3545 !important;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color) !important;
   transform: translateY(-1px);
-  outline: 2px solid #dc3545;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
 .hover-bg-danger:hover {
-  background-color: rgba(220, 53, 69, 0.1) !important;
-  color: #dc3545 !important;
+  background-color: rgba(var(--primary-rgb), 0.1) !important;
+  color: var(--primary-color) !important;
   transform: translateY(-1px);
 }
 
 .transition-all {
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 /* Hamburger Menu */
@@ -120,14 +133,14 @@ header {
 }
 
 .hamburger-menu {
-  background-color: rgba(220, 53, 69, 0.1);
+  background-color: rgba(var(--primary-rgb), 0.1);
   border: 2px solid transparent;
   position: relative;
 }
 
 .hamburger-menu:hover {
-  background-color: rgba(220, 53, 69, 0.2);
-  border-color: #dc3545;
+  background-color: rgba(var(--primary-rgb), 0.2);
+  border-color: var(--primary-color);
   transform: scale(1.05);
 }
 
@@ -135,9 +148,9 @@ header {
   display: block;
   width: 20px;
   height: 2px;
-  background-color: #dc3545;
+  background-color: var(--primary-color);
   margin: 4px 0;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   border-radius: 1px;
 }
 
@@ -197,10 +210,10 @@ header {
 }
 
 .mobile-nav-link:hover {
-  background-color: rgba(220, 53, 69, 0.15) !important;
-  border-left-color: #dc3545;
+  background-color: rgba(var(--primary-rgb), 0.15) !important;
+  border-left-color: var(--primary-color);
   transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.1);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.1);
 }
 
 /* Brands Section */
@@ -264,6 +277,10 @@ header {
   .brands-logo {
     width: 8rem;
     height: auto;
+  }
+
+  .hero-bg {
+    background-image: url('https://picsum.photos/1200/800?grayscale&blur=2');
   }
 }
 
@@ -425,6 +442,28 @@ header {
   .card-text {
     line-height: 1.6;
   }
+
+  /* Mobile adjustments for floating buttons - Optimized positioning */
+  /* Hide Back to Top button on mobile for cleaner interface */
+  #back-to-top {
+    display: none !important;
+  }
+
+  .floating-cta {
+    width: 64px !important;
+    height: 64px !important;
+    z-index: 1050; /* Ensure above other elements */
+    transition: var(--transition);
+    position: fixed !important;
+    right: 1rem !important;
+    bottom: max(1rem, env(safe-area-inset-bottom) + 1rem) !important; /* Single button at bottom right with safe area */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Adjust icon sizes for larger buttons */
+  .floating-cta i {
+    font-size: 1.5rem !important;
+  }
 }
 
 /* Desktop adjustments (min-width: 992px) */
@@ -464,9 +503,9 @@ header {
 }
 
 .contact-item:hover {
-  background-color: rgba(220, 53, 69, 0.1);
+  background-color: rgba(var(--primary-rgb), 0.1);
   transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
 }
 
 /* Form Enhancements */
@@ -475,19 +514,19 @@ header {
 }
 
 .is-valid {
-  border-color: #198754 !important;
+  border-color: var(--success-color) !important;
 }
 
 .is-valid + .form-text {
-  color: #198754 !important;
+  color: var(--success-color) !important;
 }
 
 .is-invalid {
-  border-color: #dc3545 !important;
+  border-color: var(--primary-color) !important;
 }
 
 .is-invalid + .form-text {
-  color: #dc3545 !important;
+  color: var(--primary-color) !important;
 }
 
 /* Alert Messages */
@@ -511,13 +550,13 @@ header {
 .form-control:focus,
 .form-select:focus,
 .form-control-lg:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
 }
 
 /* Required field indicator */
 .text-danger {
-  color: #dc3545 !important;
+  color: var(--primary-color) !important;
 }
 
 /* Main Content Container */
@@ -553,7 +592,7 @@ main .container {
 }
 
 #case-studies .card:hover .card-body {
-  background-color: rgba(220, 53, 69, 0.02);
+  background-color: rgba(var(--primary-rgb), 0.02);
 }
 
 #case-studies .badge {
@@ -562,14 +601,14 @@ main .container {
 }
 
 #case-studies .btn-outline-danger {
-  border-color: #dc3545;
-  color: #dc3545;
-  transition: all 0.3s ease;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transition: var(--transition);
 }
 
 #case-studies .btn-outline-danger:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
 }
 
@@ -615,22 +654,22 @@ main .container {
 
 /* Accordion Styles for Installation Guide */
 .accordion-button {
-  background-color: #f8f9fa;
+  background-color: var(--light-bg);
   border: 1px solid #dee2e6;
-  color: #212529;
+  color: var(--dark-bg);
   font-size: 1.1rem;
   padding: 1.5rem 2rem;
 }
 
 .accordion-button:not(.collapsed) {
-  background-color: rgba(220, 53, 69, 0.1);
-  color: #dc3545;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color);
   box-shadow: none;
 }
 
 .accordion-button:focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+  border-color: var(--primary-color);
 }
 
 .accordion-item {
@@ -667,6 +706,6 @@ main .container {
   content: counter(list-group-counter) ".";
   counter-increment: list-group-counter;
   font-weight: bold;
-  color: #dc3545;
+  color: var(--primary-color);
   margin-right: 1rem;
 }
