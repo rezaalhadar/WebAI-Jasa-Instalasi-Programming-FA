@@ -416,6 +416,12 @@ section {
   color: #dc3545 !important;
 }
 
+/* Main Content Full Width */
+main .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* Accordion Styles for Installation Guide */
 .accordion-button {
   background-color: #f8f9fa;
