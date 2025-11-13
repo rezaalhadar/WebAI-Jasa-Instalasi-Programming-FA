@@ -2,6 +2,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+section {
+  scroll-margin-top: 75px; /* Account for sticky header height */
+}
+
 /* Header Styles */
 .nav-link {
   position: relative;
@@ -113,6 +117,11 @@ body {
   box-shadow: 0 4px 12px rgba(220, 53, 69, 0.1);
 }
 
+/* Brands Section */
+.brands-logo {
+  height: 3rem;
+}
+
 /* Hero Section */
 .hero-bg {
   background-image: url('https://picsum.photos/1920/1080?grayscale&blur=2');
@@ -128,13 +137,60 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 991.98px) {
-  .nav-link {
-    font-size: 0.9rem;
+
+/* Tablet adjustments (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-bg {
+    height: 70vh;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .display-5 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  .card-img-top {
+    height: 12rem;
+  }
+
+  .brands-logo {
+    height: 3.5rem;
   }
 }
 
+/* Mobile adjustments (max-width: 767px) */
 @media (max-width: 767.98px) {
+  .hero-bg {
+    height: 50vh;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .display-5 {
+    font-size: 1.75rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .card-img-top {
+    height: 10rem;
+  }
+
+  .brands-logo {
+    height: 2.5rem;
+  }
+
   .hamburger-menu {
     width: 40px;
     height: 40px;
@@ -147,5 +203,44 @@ body {
 
   .mobile-menu {
     max-height: 650px;
+  }
+
+  /* Adjust section padding for mobile */
+  .py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Adjust container padding */
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Adjust card padding */
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  /* Adjust form elements */
+  .form-control-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Desktop adjustments (min-width: 992px) */
+@media (min-width: 992px) {
+  .brands-logo {
+    height: 4rem;
+  }
+
+  .card-img-top {
+    height: 16rem;
   }
 }
