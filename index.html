@@ -52,6 +52,10 @@
 
 <body class="bg-light">
   <a href="#main" class="skip-link">Skip to main content</a>
+  <!-- Mobile Menu Toggle -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu"
+    aria-expanded="false" onchange="this.setAttribute('aria-expanded', this.checked)">
+
   <!-- Header -->
   <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-lg sticky-top">
     <div class="container py-3">
@@ -107,72 +111,49 @@
           </a>
           <label for="menu-toggle"
             class="hamburger-menu text-dark d-flex align-items-center justify-content-center rounded-circle"
-            style="cursor: pointer; width: 44px; height: 44px; transition: all 0.3s ease;"
+            style="cursor: pointer; transition: all 0.3s ease;"
             aria-label="Open mobile menu">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+            <i class="material-icons hamburger-icon">menu</i>
           </label>
-        </div>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle mobile menu"
-          aria-expanded="false" onchange="this.setAttribute('aria-expanded', this.checked)">
-        <div class="mobile-menu d-md-none" role="navigation" aria-label="Mobile navigation menu">
-          <div class="d-flex justify-content-end px-3 py-2 border-bottom">
-            <button class="btn btn-sm btn-outline-danger rounded-circle"
-              style="width: 32px; height: 32px; font-size: 16px; line-height: 1;"
-              onclick="document.getElementById('menu-toggle').checked = false;"
-              aria-label="Close mobile menu">×</button>
-          </div>
-          <nav class="d-flex flex-column px-3 py-4">
-            <a href="#services"
-              class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all"
-              onclick="document.getElementById('menu-toggle').checked = false;">
-              <span class="d-flex align-items-center">
-                <i class="material-icons me-3 text-danger" style="font-size: 20px;">settings</i>
-                Layanan
-              </span>
-            </a>
-            <a href="#fire-alarm-intro"
-              class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all"
-              onclick="document.getElementById('menu-toggle').checked = false;">
-              <span class="d-flex align-items-center">
-                <i class="material-icons me-3 text-danger" style="font-size: 20px;">info</i>
-                Penjelasan
-              </span>
-            </a>
-            <a href="#why-us"
-              class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all"
-              onclick="document.getElementById('menu-toggle').checked = false;">
-              <span class="d-flex align-items-center">
-                <i class="material-icons me-3 text-danger" style="font-size: 20px;">help_outline</i>
-                Mengapa Kami
-              </span>
-            </a>
-            <a href="#case-studies"
-              class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all"
-              onclick="document.getElementById('menu-toggle').checked = false;">
-              <span class="d-flex align-items-center">
-                <i class="material-icons me-3 text-danger" style="font-size: 20px;">work</i>
-                Studi Kasus
-              </span>
-            </a>
-            <a href="#contact"
-              class="mobile-nav-link d-block w-100 text-start px-4 py-3 mb-2 rounded-3 text-dark fw-medium text-decoration-none transition-all"
-              onclick="document.getElementById('menu-toggle').checked = false;">
-              <span class="d-flex align-items-center">
-                <i class="material-icons me-3 text-danger" style="font-size: 20px;">email</i>
-                Kontak
-              </span>
-            </a>
-            <div class="mt-3 pt-3 border-top">
-              <a href="#contact" class="btn btn-danger w-100 rounded-pill py-3 fw-semibold"
-                onclick="document.getElementById('menu-toggle').checked = false;">Konsultasi Gratis</a>
-            </div>
-          </nav>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu d-md-none" role="navigation" aria-label="Mobile navigation menu">
+    <nav class="d-flex flex-column px-2 py-3">
+      <a href="#services"
+        class="mobile-nav-link d-block w-100 text-start px-3 py-2 mb-1 text-dark fw-medium text-decoration-none transition-all"
+        onclick="document.getElementById('menu-toggle').checked = false;">
+        Layanan
+      </a>
+      <a href="#fire-alarm-intro"
+        class="mobile-nav-link d-block w-100 text-start px-3 py-2 mb-1 text-dark fw-medium text-decoration-none transition-all"
+        onclick="document.getElementById('menu-toggle').checked = false;">
+        Penjelasan
+      </a>
+      <a href="#why-us"
+        class="mobile-nav-link d-block w-100 text-start px-3 py-2 mb-1 text-dark fw-medium text-decoration-none transition-all"
+        onclick="document.getElementById('menu-toggle').checked = false;">
+        Mengapa Kami
+      </a>
+      <a href="#case-studies"
+        class="mobile-nav-link d-block w-100 text-start px-3 py-2 mb-1 text-dark fw-medium text-decoration-none transition-all"
+        onclick="document.getElementById('menu-toggle').checked = false;">
+        Studi Kasus
+      </a>
+      <a href="#contact"
+        class="mobile-nav-link d-block w-100 text-start px-3 py-2 mb-1 text-dark fw-medium text-decoration-none transition-all"
+        onclick="document.getElementById('menu-toggle').checked = false;">
+        Kontak
+      </a>
+      <div class="mt-2 pt-2 border-top">
+        <a href="#contact" class="btn btn-danger w-100 py-2 fw-semibold"
+          onclick="document.getElementById('menu-toggle').checked = false;">Konsultasi Gratis</a>
+      </div>
+    </nav>
+  </div>
 
   <!-- Main Content -->
   <main id="main">

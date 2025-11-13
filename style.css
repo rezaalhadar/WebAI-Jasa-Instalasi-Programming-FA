@@ -133,9 +133,11 @@ header {
 }
 
 .hamburger-menu {
-  background-color: rgba(var(--primary-rgb), 0.1);
+  background-color: transparent;
   border: 2px solid transparent;
   position: relative;
+  width: 44px;
+  height: 44px;
 }
 
 .hamburger-menu:hover {
@@ -144,27 +146,16 @@ header {
   transform: scale(1.05);
 }
 
-.hamburger-line {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: var(--primary-color);
-  margin: 4px 0;
+.hamburger-icon {
+  font-size: 24px;
+  color: #000000;
   transition: var(--transition);
-  border-radius: 1px;
 }
 
-.menu-toggle:checked + .hamburger-menu .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.menu-toggle:checked ~ header .hamburger-menu .hamburger-icon::before {
+  content: "close";
 }
 
-.menu-toggle:checked + .hamburger-menu .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle:checked + .hamburger-menu .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
-}
 
 /* Mobile Menu */
 .mobile-menu {
@@ -174,25 +165,9 @@ header {
   overflow: hidden;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: #ffffff;
   border-top: 1px solid #dee2e6;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 0 0 16px 16px;
-  margin-top: 16px;
-  position: relative;
-}
-
-.mobile-menu::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: 20px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #ffffff;
-  z-index: 1;
+  margin-top: 8px;
 }
 
 .menu-toggle:checked + .mobile-menu,
@@ -210,10 +185,7 @@ header {
 }
 
 .mobile-nav-link:hover {
-  background-color: rgba(var(--primary-rgb), 0.15) !important;
-  border-left-color: var(--primary-color);
-  transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.1);
+  background-color: rgba(var(--primary-rgb), 0.1) !important;
 }
 
 /* Brands Section */
@@ -329,24 +301,18 @@ header {
   }
 
   .hamburger-menu {
-    width: 48px;
-    height: 48px;
-  }
-
-  .hamburger-line {
-    width: 20px;
-    margin: 4px 0;
+    width: 44px;
+    height: 44px;
   }
 
   .mobile-menu {
-    max-height: 650px;
+    max-height: 600px;
   }
 
   /* Improve touch targets */
   .mobile-nav-link {
-    min-height: 48px;
-    padding: 1rem 1.5rem !important;
-    will-change: transform;
+    min-height: 44px;
+    padding: 0.5rem 1rem !important;
   }
 
   .accordion-button {
