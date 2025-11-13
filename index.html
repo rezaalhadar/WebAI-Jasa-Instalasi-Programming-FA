@@ -270,13 +270,13 @@
             <div class="accordion" id="installationAccordion">
               <!-- Jenis Sistem Fire Alarm -->
               <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2 class="accordion-header" id="systemsHeading">
                   <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
                     data-bs-target="#systems" aria-expanded="true" aria-controls="systems">
                     <i class="material-icons me-2 text-danger">settings</i>Jenis Sistem Fire Alarm Global
                   </button>
                 </h2>
-                <div id="systems" class="accordion-collapse collapse show" data-bs-parent="#installationAccordion">
+                <div id="systems" class="accordion-collapse collapse show" aria-labelledby="systemsHeading" data-bs-parent="#installationAccordion">
                   <div class="accordion-body">
                     <div class="row g-4">
                       <div class="col-md-6 col-lg-4">
@@ -352,13 +352,13 @@
 
               <!-- Langkah Instalasi -->
               <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2 class="accordion-header" id="installationHeading">
                   <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
                     data-bs-target="#installation" aria-expanded="false" aria-controls="installation">
                     <i class="material-icons me-2 text-danger">build</i>Langkah-langkah Instalasi
                   </button>
                 </h2>
-                <div id="installation" class="accordion-collapse collapse" data-bs-parent="#installationAccordion">
+                <div id="installation" class="accordion-collapse collapse" aria-labelledby="installationHeading" data-bs-parent="#installationAccordion">
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-12">
@@ -471,45 +471,249 @@
 
               <!-- Setting dan Konfigurasi -->
               <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2 class="accordion-header" id="settingsHeading">
                   <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
                     data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                    <i class="material-icons me-2 text-danger">tune</i>Setting dan Konfigurasi
+                    <i class="material-icons me-2 text-danger">tune</i>Setting dan Konfigurasi Sistem
                   </button>
                 </h2>
-                <div id="settings" class="accordion-collapse collapse" data-bs-parent="#installationAccordion">
+                <div id="settings" class="accordion-collapse collapse" aria-labelledby="settingsHeading" data-bs-parent="#installationAccordion">
                   <div class="accordion-body">
-                    <div class="row g-4">
-                      <div class="col-md-6">
-                        <h5 class="fw-bold text-danger mb-3">Parameter Dasar</h5>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><strong>Zone Configuration:</strong> Atur jumlah zona sesuai layout bangunan
-                          </li>
-                          <li class="mb-2"><strong>Detector Sensitivity:</strong> Set sensitivitas berdasarkan jenis
-                            area (normal/high sensitivity)</li>
-                          <li class="mb-2"><strong>Alarm Delay:</strong> Konfigurasikan waktu delay untuk menghindari
-                            false alarm</li>
-                          <li class="mb-2"><strong>Sounder Pattern:</strong> Atur pola suara alarm (continuous/pulse)
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6">
-                        <h5 class="fw-bold text-danger mb-3">Advanced Settings</h5>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><strong>Day/Night Mode:</strong> Aktifkan mode berbeda untuk siang/malam</li>
-                          <li class="mb-2"><strong>Silence Function:</strong> Konfigurasikan tombol silence untuk reset
-                            alarm</li>
-                          <li class="mb-2"><strong>Supervisory Monitoring:</strong> Aktifkan monitoring kondisi
-                            perangkat</li>
-                          <li class="mb-2"><strong>Network Integration:</strong> Setup koneksi dengan sistem BMS jika
-                            diperlukan</li>
-                        </ul>
+                    <div class="alert alert-warning mb-4">
+                      <i class="fas fa-exclamation-triangle me-2"></i>
+                      <strong>Peringatan:</strong> Konfigurasi sistem fire alarm harus dilakukan oleh teknisi bersertifikat. Setting yang salah dapat mengurangi efektivitas sistem keamanan kebakaran.
+                    </div>
+
+                    <!-- Parameter Dasar -->
+                    <div class="mb-5">
+                      <h5 class="fw-bold text-danger mb-4">
+                        <i class="material-icons me-2" style="font-size: 20px;">settings</i>Parameter Dasar Sistem
+                      </h5>
+                      <div class="row g-4">
+                        <div class="col-lg-6">
+                          <div class="card border-danger h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-danger">
+                                <i class="material-icons me-2" style="font-size: 18px;">location_on</i>Konfigurasi Zona
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Jumlah Zona:</strong> Sesuai layout bangunan (max 99 zona)</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Naming Zona:</strong> Label deskriptif (Lantai 1, Gudang, Kantor)</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Zone Mapping:</strong> Pemetaan perangkat per zona</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Zone Dependency:</strong> Relasi antar zona untuk alarm cascading</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="card border-danger h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-danger">
+                                <i class="material-icons me-2" style="font-size: 18px;">sensors</i>Sensitivitas Detektor
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Smoke Detector:</strong> 0.5-2.5% obscuration/m (sesuai NFPA 72)</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Heat Detector:</strong> 54°C-78°C fixed/ rate-of-rise</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Beam Detector:</strong> 25-50% obscuration untuk area tinggi</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>CO Detector:</strong> 25-100 ppm sesuai threshold kesehatan</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="alert alert-info mt-4">
+
+                    <!-- Setting Lanjutan -->
+                    <div class="mb-5">
+                      <h5 class="fw-bold text-danger mb-4">
+                        <i class="material-icons me-2" style="font-size: 20px;">integration_instructions</i>Setting Lanjutan
+                      </h5>
+                      <div class="row g-4">
+                        <div class="col-lg-4">
+                          <div class="card border-primary h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-primary">
+                                <i class="material-icons me-2" style="font-size: 18px;">brightness_6</i>Mode Operasi
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Day/Night Mode:</strong> Sensitivitas berbeda siang/malam</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Maintenance Mode:</strong> Bypass untuk testing</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Emergency Mode:</strong> Override untuk kondisi darurat</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Disable Mode:</strong> Shutdown sistem untuk maintenance</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="card border-primary h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-primary">
+                                <i class="material-icons me-2" style="font-size: 18px;">network_check</i>Monitoring & Kontrol
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Supervisory:</strong> Monitor kondisi perangkat & kabel</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Fault Monitoring:</strong> Deteksi gangguan sistem</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Power Monitoring:</strong> Monitor baterai & power supply</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Communication Check:</strong> Verifikasi koneksi panel</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="card border-primary h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-primary">
+                                <i class="material-icons me-2" style="font-size: 18px;">timer</i>Konfigurasi Delay Alarm
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Pre-Alarm Delay:</strong> 0-60 detik untuk verifikasi alarm</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Alarm Delay:</strong> 0-300 detik untuk evakuasi</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Investigation Time:</strong> Waktu untuk memeriksa alarm</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Auto-Silence:</strong> Reset otomatis setelah waktu tertentu</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="card border-primary h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-primary">
+                                <i class="material-icons me-2" style="font-size: 18px;">volume_up</i>Pola Suara Alarm
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Continuous:</strong> Suara terus menerus untuk emergency</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Pulse:</strong> Suara berdenyut untuk alert non-emergency</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Two-Stage:</strong> Alert kemudian full alarm</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Custom Pattern:</strong> Pola suara khusus per zona</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="card border-primary h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-primary">
+                                <i class="material-icons me-2" style="font-size: 18px;">integration_instructions</i>Integrasi Sistem
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>BMS Integration:</strong> Building Management System</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>HVAC Control:</strong> Shutdown AC otomatis</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Elevator Control:</strong> Return to lobby</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Access Control:</strong> Unlock emergency exits</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Setting Khusus Merk -->
+                    <div class="mb-5">
+                      <h5 class="fw-bold text-danger mb-4">
+                        <i class="material-icons me-2" style="font-size: 20px;">branding_watermark</i>Setting Khusus Merk Panel
+                      </h5>
+                      <div class="row g-4">
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card h-100 border-warning">
+                            <div class="card-header bg-warning text-white">
+                              <h6 class="card-title mb-0 fw-bold">
+                                <img src="brand/notifier-logo.png" alt="Notifier" class="me-2" style="height: 20px;">Notifier
+                              </h6>
+                            </div>
+                            <div class="card-body">
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-cog text-warning me-2"></i>ONYXWorks Configuration</li>
+                                <li class="mb-2"><i class="fas fa-cog text-warning me-2"></i>VERIFIRE Tools Setup</li>
+                                <li class="mb-2"><i class="fas fa-cog text-warning me-2"></i>NAC Protocol Settings</li>
+                                <li class="mb-2"><i class="fas fa-cog text-warning me-2"></i>Network Configuration</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card h-100 border-info">
+                            <div class="card-header bg-info text-white">
+                              <h6 class="card-title mb-0 fw-bold">
+                                <img src="brand/siemens-logo.png" alt="Siemens" class="me-2" style="height: 20px;">Siemens Cerberus
+                              </h6>
+                            </div>
+                            <div class="card-body">
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-cog text-info me-2"></i>Cerberus Remote</li>
+                                <li class="mb-2"><i class="fas fa-cog text-info me-2"></i>Cerberus DMS Setup</li>
+                                <li class="mb-2"><i class="fas fa-cog text-info me-2"></i>FDnet Protocol Settings</li>
+                                <li class="mb-2"><i class="fas fa-cog text-info me-2"></i>Remote Diagnostics</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card h-100 border-secondary">
+                            <div class="card-header bg-secondary text-white">
+                              <h6 class="card-title mb-0 fw-bold">
+                                <img src="brand/hochiki-logo.png" alt="Hochiki" class="me-2" style="height: 20px;">Hochiki
+                              </h6>
+                            </div>
+                            <div class="card-body">
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-cog text-secondary me-2"></i>ESP Protocol Configuration</li>
+                                <li class="mb-2"><i class="fas fa-cog text-secondary me-2"></i>Enhanced Systems Manager</li>
+                                <li class="mb-2"><i class="fas fa-cog text-secondary me-2"></i>Loop Configuration</li>
+                                <li class="mb-2"><i class="fas fa-cog text-secondary me-2"></i>Network Settings</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Setting Keamanan & Log -->
+                    <div class="mb-4">
+                      <h5 class="fw-bold text-danger mb-4">
+                        <i class="material-icons me-2" style="font-size: 20px;">security</i>Keamanan & Logging
+                      </h5>
+                      <div class="row g-4">
+                        <div class="col-md-6">
+                          <div class="card border-success h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-success">
+                                <i class="material-icons me-2" style="font-size: 18px;">lock</i>Keamanan Akses
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-shield-alt text-success me-2"></i><strong>Password Protection:</strong> Multi-level access control</li>
+                                <li class="mb-2"><i class="fas fa-shield-alt text-success me-2"></i><strong>User Roles:</strong> Administrator, Technician, User</li>
+                                <li class="mb-2"><i class="fas fa-shield-alt text-success me-2"></i><strong>Remote Access:</strong> Secure VPN connection</li>
+                                <li class="mb-2"><i class="fas fa-shield-alt text-success me-2"></i><strong>Audit Trail:</strong> Log semua perubahan konfigurasi</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card border-success h-100">
+                            <div class="card-body">
+                              <h6 class="card-title fw-bold text-success">
+                                <i class="material-icons me-2" style="font-size: 18px;">history</i>Event Logging
+                              </h6>
+                              <ul class="list-unstyled small mb-0">
+                                <li class="mb-2"><i class="fas fa-file-alt text-success me-2"></i><strong>Alarm History:</strong> Log semua event alarm</li>
+                                <li class="mb-2"><i class="fas fa-file-alt text-success me-2"></i><strong>Fault Records:</strong> Catat gangguan sistem</li>
+                                <li class="mb-2"><i class="fas fa-file-alt text-success me-2"></i><strong>Maintenance Log:</strong> Riwayat perawatan</li>
+                                <li class="mb-2"><i class="fas fa-file-alt text-success me-2"></i><strong>Report Generation:</strong> Laporan harian/mingguan</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="alert alert-info">
                       <i class="fas fa-info-circle me-2"></i>
-                      <strong>Penting:</strong> Semua setting harus sesuai dengan regulasi keamanan kebakaran setempat
-                      dan manual pabrikan perangkat.
+                      <strong>Penting:</strong> Semua konfigurasi sistem fire alarm harus sesuai dengan standar internasional (NFPA 72, EN 54, BS 5839) dan regulasi keamanan kebakaran Indonesia (SNI). Perubahan setting hanya boleh dilakukan oleh teknisi bersertifikat untuk menjaga integritas sistem keamanan kebakaran.
+                    </div>
+
+                    <div class="alert alert-danger">
+                      <i class="fas fa-exclamation-triangle me-2"></i>
+                      <strong>Peringatan:</strong> Konfigurasi yang tidak tepat dapat menyebabkan sistem tidak berfungsi optimal, false alarm, atau bahkan kegagalan deteksi kebakaran. Selalu lakukan testing menyeluruh setelah perubahan konfigurasi.
                     </div>
                   </div>
                 </div>
@@ -517,13 +721,13 @@
 
               <!-- Testing dan Maintenance -->
               <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2 class="accordion-header" id="testingHeading">
                   <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
                     data-bs-target="#testing" aria-expanded="false" aria-controls="testing">
                     <i class="material-icons me-2 text-danger">check_circle</i>Testing dan Maintenance
                   </button>
                 </h2>
-                <div id="testing" class="accordion-collapse collapse" data-bs-parent="#installationAccordion">
+                <div id="testing" class="accordion-collapse collapse" aria-labelledby="testingHeading" data-bs-parent="#installationAccordion">
                   <div class="accordion-body">
                     <h5 class="fw-bold text-danger mb-3">Prosedur Testing</h5>
                     <div class="row g-4">

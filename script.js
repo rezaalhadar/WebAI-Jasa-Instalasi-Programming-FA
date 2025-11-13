@@ -1,5 +1,5 @@
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scroll for anchor links (exclude accordion buttons and navigation)
+document.querySelectorAll('a[href^="#"]:not(.accordion-button):not(.mobile-nav-link):not(.nav-link)').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
@@ -10,6 +10,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
+});
+
+// Prevent auto-scroll on accordion interactions
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.accordion-button')) {
+    // Temporarily disable smooth scrolling for accordion interactions
+    const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    // Restore smooth scrolling after a short delay
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = originalScrollBehavior || 'smooth';
+    }, 100);
+  }
 });
 
 // Back to top button

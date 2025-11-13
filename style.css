@@ -645,6 +645,15 @@ main .container {
   padding: 2rem;
 }
 
+/* Prevent auto-scroll on accordion interactions */
+.accordion-button {
+  scroll-behavior: auto;
+}
+
+.accordion-collapse {
+  scroll-behavior: auto;
+}
+
 .list-group-numbered {
   counter-reset: list-group-counter;
 }
