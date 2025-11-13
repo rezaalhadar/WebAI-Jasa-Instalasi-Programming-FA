@@ -7,6 +7,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Accessibility */
 .skip-link {
   position: absolute;
@@ -41,6 +53,7 @@ html {
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
   transition: all 0.3s ease;
   animation: pulse 2s infinite;
+  will-change: transform, box-shadow;
 }
 
 .floating-cta:hover {
@@ -70,15 +83,25 @@ section {
 }
 
 /* Header Styles */
+header {
+  z-index: 50;
+  position: sticky;
+  top: 0;
+}
+
 .nav-link {
   position: relative;
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus-visible {
   background-color: rgba(220, 53, 69, 0.1);
   color: #dc3545 !important;
   transform: translateY(-1px);
+  outline: 2px solid #dc3545;
+  outline-offset: 2px;
 }
 
 .hover-bg-danger:hover {
@@ -184,6 +207,12 @@ section {
 .brands-logo {
   width: 6rem;
   height: auto;
+  filter: grayscale(100%) opacity(0.7);
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.brands-logo:hover {
+  filter: grayscale(0%) opacity(1);
 }
 
 .brand-item {
@@ -196,7 +225,7 @@ section {
 
 /* Hero Section */
 .hero-bg {
-  background-image: url('https://picsum.photos/1920/1080?grayscale&blur=2');
+  background-image: url('https://picsum.photos/1200/800?grayscale&blur=2');
   background-size: cover;
   background-position: center;
   height: 60vh;
@@ -491,10 +520,11 @@ section {
   color: #dc3545 !important;
 }
 
-/* Main Content Full Width */
-main .container-fluid {
-  padding-left: 0;
-  padding-right: 0;
+/* Main Content Container */
+main .container {
+  max-width: 1170px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Case Studies Section Optimizations */
@@ -502,6 +532,7 @@ main .container-fluid {
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  will-change: transform, box-shadow;
 }
 
 #case-studies .card:hover {
