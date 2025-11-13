@@ -1,5 +1,6 @@
 body {
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 html {
@@ -244,8 +245,8 @@ section {
 
   /* Adjust container padding */
   .container-fluid {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Adjust card padding */
