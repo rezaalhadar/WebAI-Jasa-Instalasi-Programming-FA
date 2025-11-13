@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Jasa instalasi dan programming sistem fire alarm Notifier dan Siemens. Solusi profesional untuk keamanan kebakaran." />
+    <meta name="theme-color" content="#dc3545" />
     <title>Jasa Instalasi & Programming Fire Alarm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,9 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://picsum.photos/1920/1080?grayscale&blur=2" as="image">
     <link rel="stylesheet" href="style.css">
   </head>
   <body class="bg-light">
+    <a href="#main" class="skip-link">Skip to main content</a>
     <!-- Header -->
     <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-lg sticky-top" style="z-index: 50; position: sticky; top: 0;">
       <div class="container-fluid px-3 py-3">
@@ -98,7 +102,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main">
       <!-- Hero Section -->
       <section class="hero-bg text-white d-flex align-items-center position-relative">
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
@@ -255,7 +259,7 @@
           <div class="row g-4">
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card h-100 shadow-lg border-0 overflow-hidden">
-                <img src="https://picsum.photos/seed/project1/800/600" alt="Integrasi Sistem di Gedung Perkantoran High-Rise" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <img src="https://picsum.photos/seed/project1/800/600" alt="Integrasi Sistem di Gedung Perkantoran High-Rise" class="card-img-top" style="height: 14rem; object-fit: cover;" loading="lazy" />
                 <div class="card-body p-4">
                   <h3 class="card-title h5 fw-bold text-dark mb-3">Integrasi Sistem di Gedung Perkantoran High-Rise</h3>
                   <p class="card-text text-muted small">Berhasil mengintegrasikan sistem fire alarm Notifier dengan BMS gedung perkantoran, meningkatkan respons kebakaran sebesar 40% tanpa mengganggu operasional harian.</p>
@@ -264,7 +268,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card h-100 shadow-lg border-0 overflow-hidden">
-                <img src="https://picsum.photos/seed/project2/800/600" alt="Upgrade Sistem di Pabrik Manufaktur" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <img src="https://picsum.photos/seed/project2/800/600" alt="Upgrade Sistem di Pabrik Manufaktur" class="card-img-top" style="height: 14rem; object-fit: cover;" loading="lazy" />
                 <div class="card-body p-4">
                   <h3 class="card-title h5 fw-bold text-dark mb-3">Upgrade Sistem di Pabrik Manufaktur</h3>
                   <p class="card-text text-muted small">Upgrade sistem fire alarm konvensional ke Siemens Cerberus PRO di pabrik 24/7, meningkatkan akurasi deteksi dan mengurangi alarm palsu.</p>
@@ -273,7 +277,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card h-100 shadow-lg border-0 overflow-hidden">
-                <img src="https://picsum.photos/seed/project3/800/600" alt="Instalasi Sistem di Hotel Mewah" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <img src="https://picsum.photos/seed/project3/800/600" alt="Instalasi Sistem di Hotel Mewah" class="card-img-top" style="height: 14rem; object-fit: cover;" loading="lazy" />
                 <div class="card-body p-4">
                   <h3 class="card-title h5 fw-bold text-dark mb-3">Instalasi Sistem di Hotel Mewah</h3>
                   <p class="card-text text-muted small">Instalasi sistem fire alarm Siemens Cerberus ECO di hotel 5 bintang, memenuhi standar internasional tanpa mengganggu tamu.</p>
@@ -282,7 +286,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card h-100 shadow-lg border-0 overflow-hidden">
-                <img src="https://picsum.photos/seed/project4/800/600" alt="Perawatan Sistem di Pusat Perbelanjaan" class="card-img-top" style="height: 14rem; object-fit: cover;" />
+                <img src="https://picsum.photos/seed/project4/800/600" alt="Perawatan Sistem di Pusat Perbelanjaan" class="card-img-top" style="height: 14rem; object-fit: cover;" loading="lazy" />
                 <div class="card-body p-4">
                   <h3 class="card-title h5 fw-bold text-dark mb-3">Perawatan Sistem di Pusat Perbelanjaan</h3>
                   <p class="card-text text-muted small">Maintenance rutin sistem fire alarm Notifier di mall besar, memastikan sistem optimal tanpa mengganggu operasional.</p>
@@ -305,52 +309,86 @@
             <div class="col-12 col-lg-4">
               <div class="bg-light p-4 p-md-5 rounded-3 shadow-lg border h-100">
                 <h3 class="h4 fw-bold text-dark mb-4">Informasi Kontak</h3>
-                <div class="d-flex align-items-center mb-3">
+                <div class="contact-item d-flex align-items-center mb-3 p-2 rounded-3">
                   <i class="fas fa-phone text-danger me-3" style="font-size: 20px;"></i>
                   <div>
                     <p class="mb-0 fw-medium">Telepon</p>
                     <p class="mb-0 text-muted">+62 812 3456 7890</p>
                   </div>
                 </div>
-                <div class="d-flex align-items-center mb-3">
+                <div class="contact-item d-flex align-items-center mb-3 p-2 rounded-3">
                   <i class="fas fa-envelope text-danger me-3" style="font-size: 20px;"></i>
                   <div>
                     <p class="mb-0 fw-medium">Email</p>
                     <p class="mb-0 text-muted">info@firesecure.com</p>
                   </div>
                 </div>
-                <div class="d-flex align-items-center mb-4">
+                <div class="contact-item d-flex align-items-center mb-4 p-2 rounded-3">
                   <i class="fas fa-map-marker-alt text-danger me-3" style="font-size: 20px;"></i>
                   <div>
                     <p class="mb-0 fw-medium">Alamat</p>
                     <p class="mb-0 text-muted">Jakarta, Indonesia</p>
                   </div>
                 </div>
-                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20konsultasi%20tentang%20layanan%20fire%20alarm" class="btn btn-success w-100 rounded-pill py-3 fw-semibold" target="_blank">
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20konsultasi%20tentang%20layanan%20fire%20alarm" class="btn btn-success w-100 rounded-pill py-3 fw-semibold" target="_blank" rel="noopener noreferrer" aria-label="Hubungi via WhatsApp">
                   <i class="fab fa-whatsapp me-2"></i>Hubungi via WhatsApp
                 </a>
               </div>
             </div>
             <div class="col-12 col-lg-6">
               <div class="bg-light p-4 p-md-5 rounded-3 shadow-lg border">
-                <form>
+                <form novalidate onsubmit="return sendToWhatsApp()">
                   <div class="row g-3 mb-4">
                     <div class="col-12 col-md-6">
                       <label for="name" class="form-label fw-medium text-dark">Nama Lengkap</label>
-                      <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="John Doe" required />
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-light border-0"><i class="fas fa-user text-danger"></i></span>
+                        <input type="text" id="name" name="name" class="form-control border-start-0" placeholder="John Doe" required />
+                      </div>
+                      <div class="invalid-feedback">Nama lengkap diperlukan.</div>
                     </div>
                     <div class="col-12 col-md-6">
                       <label for="email" class="form-label fw-medium text-dark">Alamat Email</label>
-                      <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="john.doe@example.com" required />
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-light border-0"><i class="fas fa-envelope text-danger"></i></span>
+                        <input type="email" id="email" name="email" class="form-control border-start-0" placeholder="john.doe@example.com" required />
+                      </div>
+                      <div class="invalid-feedback">Alamat email yang valid diperlukan.</div>
+                    </div>
+                  </div>
+                  <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-6">
+                      <label for="phone" class="form-label fw-medium text-dark">Nomor Telepon</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-light border-0"><i class="fas fa-phone text-danger"></i></span>
+                        <input type="tel" id="phone" name="phone" class="form-control border-start-0" placeholder="+62 812 3456 7890" />
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="service" class="form-label fw-medium text-dark">Jenis Layanan</label>
+                      <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-light border-0"><i class="fas fa-cogs text-danger"></i></span>
+                        <select id="service" name="service" class="form-select border-start-0">
+                          <option value="">Pilih jenis layanan</option>
+                          <option value="instalasi">Instalasi Fire Alarm</option>
+                          <option value="programming">Programming Notifier</option>
+                          <option value="programming-siemens">Programming Siemens</option>
+                          <option value="maintenance">Perawatan & Troubleshooting</option>
+                          <option value="other">Lainnya</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <div class="mb-4">
-                    <label for="message" class="form-label fw-medium text-dark">Pesan Anda</label>
+                    <label for="message" class="form-label fw-medium text-dark">
+                      <i class="fas fa-comment text-danger me-2"></i>Pesan Anda
+                    </label>
                     <textarea id="message" name="message" rows="5" class="form-control form-control-lg" placeholder="Jelaskan kebutuhan Anda..." required></textarea>
+                    <div class="invalid-feedback">Pesan diperlukan.</div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-danger btn-lg px-5 py-3 rounded-pill">
-                      Kirim Pesan
+                    <button type="submit" class="btn btn-danger btn-lg px-5 py-3 rounded-pill fw-semibold">
+                      <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
                     </button>
                   </div>
                 </form>
@@ -361,6 +399,11 @@
       </section>
     </main>
 
+    <!-- Back to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn btn-danger btn-lg rounded-circle position-fixed bottom-0 end-0 m-3" style="z-index: 10;" aria-label="Back to top" id="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">
       <div class="container-fluid px-3 text-center">
@@ -369,5 +412,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
