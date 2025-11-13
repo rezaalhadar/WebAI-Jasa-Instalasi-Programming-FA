@@ -403,3 +403,48 @@ section {
 .text-danger {
   color: #dc3545 !important;
 }
+
+/* Accordion Styles for Installation Guide */
+.accordion-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #212529;
+  font-size: 1.1rem;
+  padding: 1.5rem 2rem;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  border-color: #dc3545;
+}
+
+.accordion-item {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-body {
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
+.list-group-numbered .list-group-item {
+  border: none;
+  padding: 1rem 0;
+}
+
+.list-group-numbered .list-group-item:before {
+  content: counter(list-group-counter) ".";
+  counter-increment: list-group-counter;
+  font-weight: bold;
+  color: #dc3545;
+  margin-right: 1rem;
+}
