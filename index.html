@@ -335,40 +335,43 @@
                 </a>
               </div>
             </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8">
               <div class="bg-light p-4 p-md-5 rounded-3 shadow-lg border">
                 <form novalidate onsubmit="return sendToWhatsApp()">
                   <div class="row g-3 mb-4">
                     <div class="col-12 col-md-6">
-                      <label for="name" class="form-label fw-medium text-dark">Nama Lengkap</label>
+                      <label for="name" class="form-label fw-medium text-dark">Nama Lengkap <span class="text-danger">*</span></label>
                       <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light border-0"><i class="fas fa-user text-danger"></i></span>
-                        <input type="text" id="name" name="name" class="form-control border-start-0" placeholder="John Doe" required />
+                        <input type="text" id="name" name="name" class="form-control border-start-0" placeholder="John Doe" autocomplete="name" required aria-describedby="nameHelp" />
                       </div>
+                      <div id="nameHelp" class="form-text text-muted">Masukkan nama lengkap Anda</div>
                       <div class="invalid-feedback">Nama lengkap diperlukan.</div>
                     </div>
                     <div class="col-12 col-md-6">
                       <label for="email" class="form-label fw-medium text-dark">Alamat Email</label>
                       <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light border-0"><i class="fas fa-envelope text-danger"></i></span>
-                        <input type="email" id="email" name="email" class="form-control border-start-0" placeholder="john.doe@example.com" required />
+                        <input type="email" id="email" name="email" class="form-control border-start-0" placeholder="john.doe@example.com" autocomplete="email" aria-describedby="emailHelp" />
                       </div>
-                      <div class="invalid-feedback">Alamat email yang valid diperlukan.</div>
+                      <div class="invalid-feedback">Alamat email yang valid diperlukan jika diisi.</div>
                     </div>
                   </div>
                   <div class="row g-3 mb-4">
                     <div class="col-12 col-md-6">
-                      <label for="phone" class="form-label fw-medium text-dark">Nomor Telepon</label>
+                      <label for="phone" class="form-label fw-medium text-dark">Nomor Telepon <span class="text-danger">*</span></label>
                       <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light border-0"><i class="fas fa-phone text-danger"></i></span>
-                        <input type="tel" id="phone" name="phone" class="form-control border-start-0" placeholder="+62 812 3456 7890" />
+                        <input type="tel" id="phone" name="phone" class="form-control border-start-0" placeholder="0812 3456 7890" autocomplete="tel" required aria-describedby="phoneHelp" />
                       </div>
+                      <div id="phoneHelp" class="form-text text-muted">Masukkan nomor telepon dengan awalan 0 (contoh: 081234567890)</div>
+                      <div class="invalid-feedback">Nomor telepon diperlukan untuk WhatsApp.</div>
                     </div>
                     <div class="col-12 col-md-6">
-                      <label for="service" class="form-label fw-medium text-dark">Jenis Layanan</label>
+                      <label for="service" class="form-label fw-medium text-dark">Jenis Layanan <span class="text-danger">*</span></label>
                       <div class="input-group input-group-lg">
                         <span class="input-group-text bg-light border-0"><i class="fas fa-cogs text-danger"></i></span>
-                        <select id="service" name="service" class="form-select border-start-0">
+                        <select id="service" name="service" class="form-select border-start-0" autocomplete="off" required aria-describedby="serviceHelp">
                           <option value="">Pilih jenis layanan</option>
                           <option value="instalasi">Instalasi Fire Alarm</option>
                           <option value="programming">Programming Notifier</option>
@@ -377,13 +380,16 @@
                           <option value="other">Lainnya</option>
                         </select>
                       </div>
+                      <div id="serviceHelp" class="form-text text-muted">Pilih layanan yang Anda butuhkan</div>
+                      <div class="invalid-feedback">Pilih jenis layanan.</div>
                     </div>
                   </div>
                   <div class="mb-4">
                     <label for="message" class="form-label fw-medium text-dark">
-                      <i class="fas fa-comment text-danger me-2"></i>Pesan Anda
+                      <i class="fas fa-comment text-danger me-2"></i>Pesan Anda <span class="text-danger">*</span>
                     </label>
-                    <textarea id="message" name="message" rows="5" class="form-control form-control-lg" placeholder="Jelaskan kebutuhan Anda..." required></textarea>
+                    <textarea id="message" name="message" rows="5" class="form-control form-control-lg" placeholder="Jelaskan kebutuhan Anda secara detail..." autocomplete="off" required aria-describedby="messageHelp"></textarea>
+                    <div id="messageHelp" class="form-text text-muted">Berikan detail tentang proyek atau pertanyaan Anda</div>
                     <div class="invalid-feedback">Pesan diperlukan.</div>
                   </div>
                   <div class="text-center">
@@ -403,6 +409,11 @@
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn btn-danger btn-lg rounded-circle position-fixed bottom-0 end-0 m-3" style="z-index: 10;" aria-label="Back to top" id="back-to-top">
       <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Floating CTA Button -->
+    <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20konsultasi%20tentang%20layanan%20fire%20alarm" class="floating-cta btn btn-success btn-lg rounded-circle position-fixed bottom-0 start-0 m-3 d-flex align-items-center justify-content-center" style="z-index: 10; width: 60px; height: 60px;" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi via WhatsApp">
+      <i class="fab fa-whatsapp fa-lg"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">

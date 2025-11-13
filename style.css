@@ -24,7 +24,7 @@ html {
   top: 6px;
 }
 
-.btn:focus, .nav-link:focus, .mobile-nav-link:focus, .form-control:focus {
+.btn:focus, .form-control:focus {
   outline: 2px solid #dc3545;
   outline-offset: 2px;
 }
@@ -32,6 +32,37 @@ html {
 /* Back to Top Button */
 #back-to-top {
   display: none;
+}
+
+/* Floating CTA Button */
+.floating-cta {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.floating-cta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+.floating-cta:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
 }
 
 section {
@@ -290,6 +321,7 @@ section {
   .card-img-top {
     height: 16rem;
   }
+
 }
 
 /* Contact Section Enhancements */
@@ -319,4 +351,55 @@ section {
   background-color: rgba(220, 53, 69, 0.1);
   transform: translateX(8px);
   box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+}
+
+/* Form Enhancements */
+.form-text {
+  font-size: 0.875rem;
+}
+
+.is-valid {
+  border-color: #198754 !important;
+}
+
+.is-valid + .form-text {
+  color: #198754 !important;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.is-invalid + .form-text {
+  color: #dc3545 !important;
+}
+
+/* Alert Messages */
+.alert-message {
+  margin-top: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Loading spinner */
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Focus enhancements for accessibility */
+.form-control:focus,
+.form-select:focus,
+.form-control-lg:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Required field indicator */
+.text-danger {
+  color: #dc3545 !important;
 }
